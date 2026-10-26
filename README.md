@@ -2,7 +2,6 @@
 
 A parameterizable **asynchronous (dual-clock) FIFO** written in RTL, used to safely pass data between two unrelated clock domains. The design uses Gray-coded pointers and two-flip-flop synchronizers to avoid metastability and data-corruption issues at the clock domain crossing (CDC).
 
-> ⚠️ Items in `[brackets]` are placeholders. Replace them with the actual names/values from your code.
 
 ---
 
@@ -35,7 +34,7 @@ This project implements that FIFO at RTL level, together with its synthesized sc
 - Gray-coded read/write pointers for safe CDC
 - Two-flip-flop synchronizers for pointer crossing
 - Registered `full` (write domain) and `empty` (read domain) flags
-- Separate active-low asynchronous resets per domain `[adjust if different]`
+- Separate active-low asynchronous resets per domain 
 - Synthesizable RTL
 
 ## Architecture
@@ -116,8 +115,8 @@ async_fifo_design/
 
 ### Prerequisites
 
-- A Verilog/SystemVerilog simulator, for example ModelSim/QuestaSim, Vivado Simulator, Icarus Verilog, or Verilator `[list the tool you used]`
-- Optional: Vivado / Quartus / Yosys for synthesis and schematic viewing `[list the tool you used]`
+- A Verilog/SystemVerilog simulator, for example ModelSim/QuestaSim, Vivado Simulator, Icarus Verilog, or Verilator 
+- Optional: Vivado / Quartus / Yosys for synthesis and schematic viewing
 
 ### Clone
 
