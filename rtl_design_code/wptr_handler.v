@@ -35,10 +35,15 @@ module wptr_handler
   end
   
   assign wfull=(g_wptr_next == {~g_rptr_sync[ptr_width:ptr_width-1],g_rptr_sync[ptr_width-2:0]});
- /*
- localparam [ptr_width:0] FULL_MASK = (3 << (ptr_width-1));
- assign wfull = (g_wptr_next == (g_rptr_sync ^ FULL_MASK));
- bcz the above actuall code will not work for ptr_width=1 means depth=2 
- */
+  /*
+  NOTE: the active wfull line above only works for depth >= 4
+  (ptr_width >= 2), because g_rptr_sync[ptr_width-2:0] becomes
+  [-1:0] when ptr_width = 1 (depth = 2).
+
+  Depth-independent alternative (works for depth 2 also):
+    localparam [ptr_width:0] FULL_MASK = (3 << (ptr_width-1));
+    assign wfull = (g_wptr_next == (g_rptr_sync ^ FULL_MASK));
+  Full = top two gray bits of read pointer inverted, rest equal.
+  */
   
 endmodule
