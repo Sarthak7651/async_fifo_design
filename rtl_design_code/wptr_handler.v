@@ -35,5 +35,10 @@ module wptr_handler
   end
   
   assign wfull=(g_wptr_next == {~g_rptr_sync[ptr_width:ptr_width-1],g_rptr_sync[ptr_width-2:0]});
+ /*
+ localparam [ptr_width:0] FULL_MASK = (3 << (ptr_width-1));
+ assign wfull = (g_wptr_next == (g_rptr_sync ^ FULL_MASK));
+ bcz the above actuall code will not work for ptr_width=1 means depth=2 
+ */
   
 endmodule
